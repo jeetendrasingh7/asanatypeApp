@@ -2,7 +2,7 @@ import { Component,OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {NgbDateStruct, NgbCalendar} from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient } from "@angular/common/http";
-import swal from 'sweetalert';
+// import swal from 'sweetalert';
 
 @Component({
   selector: 'app-root',
@@ -38,15 +38,15 @@ export class AppComponent implements OnInit  {
       this.http.post('http://localhost:3000/api/task/create',this.taskform.value).subscribe(r=>{
       if(r){
         this.getAllTasks();
-        swal('your task has been saved');
-        swal("Done!", "Your Task has been Saved!", "success");
+        alert('your task has been saved');
+        // swal("Done!", "Your Task has been Saved!", "success");
 
         this.taskform.reset();
 
       }
     })
     }else{
-      swal("Attention!", "Please fill all the fields!", "error");
+      alert("Attention!");
 
     }
   }
@@ -80,8 +80,8 @@ export class AppComponent implements OnInit  {
     this.http.post('http://localhost:3000/api/task/deleteTask',obj).subscribe(result=>{
       console.log(result);
       if(result){
-        swal('deleted Successfully');
-        swal("Good job!", "You Deleted this Task!", "info");
+        alert('deleted Successfully');
+        // swal("Good job!", "You Deleted this Task!", "info");
 
         this.getAllTasks();
       }
@@ -93,7 +93,7 @@ export class AppComponent implements OnInit  {
       this.http.post('http://localhost:3000/api/task/editTask',this.editForm.value).subscribe(result=>{
         console.log(result);
         if(result){
-          swal('edited successfully');
+          alert('edited successfully');
           this.editForm.reset();
           this.temp=0;
           this.getAllTasks();
