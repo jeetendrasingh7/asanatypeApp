@@ -36,7 +36,7 @@ export class AppComponent implements OnInit  {
     this.taskform.get('createDate').setValue(Date.now());
     console.log(this.taskform.value);
     if(this.taskform.valid){
-      this.http.post('http://localhost:3000/api/task/create',this.taskform.value).subscribe(r=>{
+      this.http.post('https://asanatype.herokuapp.com/api/task/create',this.taskform.value).subscribe(r=>{
       if(r){
         this.getAllTasks();
         Swal.fire("Done!", "Your Task has been Saved!", "success");
@@ -51,7 +51,7 @@ export class AppComponent implements OnInit  {
   }
   AllTask;
   getAllTasks(){
-    this.http.get('http://localhost:3000/api/task/getall').subscribe(result=>{
+    this.http.get('https://asanatype.herokuapp.com/api/task/getall').subscribe(result=>{
       this.AllTask=result;
       console.log(this.AllTask)
     })
@@ -76,7 +76,7 @@ export class AppComponent implements OnInit  {
     var obj={
       id:task._id
     }
-    this.http.post('http://localhost:3000/api/task/deleteTask',obj).subscribe(result=>{
+    this.http.post('https://asanatype.herokuapp.com/api/task/deleteTask',obj).subscribe(result=>{
       console.log(result);
       if(result){
         Swal.fire("Done!", "Your Task has been Deleted!", "success");
@@ -88,7 +88,7 @@ export class AppComponent implements OnInit  {
   SaveTask(task){
     if(this.editForm.valid){
       console.log(this.editForm.value);
-      this.http.post('http://localhost:3000/api/task/editTask',this.editForm.value).subscribe(result=>{
+      this.http.post('https://asanatype.herokuapp.com/api/task/editTask',this.editForm.value).subscribe(result=>{
         console.log(result);
         if(result){
           Swal.fire("Done!", "Your Task has been Edited!", "success");

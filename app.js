@@ -23,12 +23,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-app.use(function(req,res,next){
-  res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    res.header('Access-Control-Allow-Headers', 'Content-Type, multipart/form-data');
-    next();
-})
+// app.use(function(req,res,next){
+//   res.header('Access-Control-Allow-Origin', '*');
+//     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+//     res.header('Access-Control-Allow-Headers', 'Content-Type, multipart/form-data');
+//     next();
+// })
 
 
 app.use('/api/task',taskRouter);
